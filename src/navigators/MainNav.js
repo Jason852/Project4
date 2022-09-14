@@ -16,7 +16,7 @@ export default function MainNav() {
         component={SignInScreen}
       />
       <Stack.Screen
-        options={{ headerShown: false }}
+        options={{ headerShown: false, gestureEnabled: false }}
         name="AccountDetailsScreen"
         component={AccountDetailsScreen}
       />
@@ -26,23 +26,10 @@ export default function MainNav() {
         component={RegisterScreen}
       />
       <Stack.Screen
-        options={{ headerShown: false }}
+        options={{ headerShown: false, gestureEnabled: false }}
         name="WelcomeScreen"
         component={WelcomeScreen}
       />
     </Stack.Navigator>
   );
 }
-
-// import {
-//   StyleSheet,
-//   Text,
-//   View,
-//   StatusBar,
-//   Image,
-//   TextInput,
-// } from "react-native";
-// import React from "react";
-// import { SafeAreaView } from "react-native-safe-area-context";
-// import { useState } from "react";
-// import { heightPercentageToDP, widthPercentageToDP } from "../../utils/scaler";

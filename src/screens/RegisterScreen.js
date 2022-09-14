@@ -41,7 +41,7 @@ export default function RegisterScreen({ navigation }) {
           />
           <TextInput
             placeholder="Email"
-            style={{ fontSize: 17 }}
+            style={{ fontSize: 17, paddingRight: widthPercentageToDP(50) }}
             value={userId}
             onChangeText={(text) => setUserId(text)}
             type="email"
@@ -54,7 +54,7 @@ export default function RegisterScreen({ navigation }) {
           />
           <TextInput
             placeholder="Password"
-            style={{ fontSize: 17 }}
+            style={{ fontSize: 17, paddingRight: widthPercentageToDP(50) }}
             value={password}
             secureTextEntry={true}
             onChangeText={(text) => setPassword(text)}
@@ -67,7 +67,7 @@ export default function RegisterScreen({ navigation }) {
           />
           <TextInput
             placeholder="Confirm Password"
-            style={{ fontSize: 17 }}
+            style={{ fontSize: 17, paddingRight: widthPercentageToDP(50) }}
             value={passwordConfirm}
             secureTextEntry={true}
             onChangeText={(text) => setPasswordConfirm(text)}
@@ -80,7 +80,7 @@ export default function RegisterScreen({ navigation }) {
           />
           <TextInput
             placeholder="Address"
-            style={{ fontSize: 17 }}
+            style={{ fontSize: 17, paddingRight: widthPercentageToDP(50) }}
             value={address}
             onChangeText={(text) => setAddress(text)}
           />
@@ -92,7 +92,7 @@ export default function RegisterScreen({ navigation }) {
           />
           <TextInput
             placeholder="Phone Number"
-            style={{ fontSize: 17 }}
+            style={{ fontSize: 17, paddingRight: widthPercentageToDP(50) }}
             value={phoneNumber}
             onChangeText={(text) => setPhoneNumber(text)}
           />

@@ -35,7 +35,7 @@ export default function SignInScreen({ navigation }) {
           />
           <TextInput
             placeholder="Email"
-            style={{ fontSize: 17 }}
+            style={{ fontSize: 17, paddingRight: widthPercentageToDP(50) }}
             value={userId}
             onChangeText={(text) => setUserId(text)}
             type="email"
@@ -48,7 +48,7 @@ export default function SignInScreen({ navigation }) {
           />
           <TextInput
             placeholder="Password"
-            style={{ fontSize: 17 }}
+            style={{ fontSize: 17, paddingRight: widthPercentageToDP(50) }}
             value={password}
             secureTextEntry={true}
             onChangeText={(text) => setPassword(text)}
