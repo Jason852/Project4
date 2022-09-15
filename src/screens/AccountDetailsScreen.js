@@ -1,65 +1,72 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Linking,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { FlatList } from "react-native-gesture-handler";
+import { FlashList } from "@shopify/flash-list";
 import { heightPercentageToDP, widthPercentageToDP } from "../../utils/scaler";
 
 const Data = [
   {
-    id: "d1",
+    user: "d1",
     image: require("../images/baobuns.jpg"),
     name: "Stix Asian Deliciousness",
     category: ["Chinese", "Wraps"],
     location: "Sunrise",
     timeOpen: "12:00",
     timeClose: "22:00",
-    phone: "9545554444",
+    phone: "tel:9545554444",
     distance: "2.8 mi",
   },
   {
-    id: "d2",
+    user: "d2",
     image: require("../images/french.jpg"),
     name: "Bistro French Cuisine",
     category: ["French", "Wraps", "Sauces"],
     location: "Ft Lauderdale",
     timeOpen: "17:00",
     timeClose: "23:00",
-    phone: "9545554448",
+    phone: "tel:9545554448",
     distance: "1.1 mi",
   },
   {
-    id: "d3",
+    user: "d3",
     image: require("../images/pizza.jpg"),
     name: "Pizza Party Palace",
     category: ["Pizza", "Subs", "Sauces"],
     location: "Miami",
     timeOpen: "11:00",
     timeClose: "23:30",
-    phone: "9545554774",
+    phone: "tel:9545554774",
     distance: "0.8 mi",
   },
   {
-    id: "d4",
+    user: "d4",
     image: require("../images/pizza.jpg"),
     name: "Seafood Extravaganza",
     category: ["Seafood", "Yes"],
     location: "Ft Lauderdale",
     timeOpen: "11:00",
     timeClose: "23:30",
-    phone: "9545554774",
+    phone: "tel:9545554774",
     distance: "3.4 mi",
   },
 ];
 const categoryList = [
-  { id: "1", cat: "Chinese" },
-  { id: "2", cat: "Seafood" },
-  { id: "3", cat: "Wraps" },
-  { id: "4", cat: "French" },
-  { id: "5", cat: "Sauces" },
-  { id: "6", cat: "Yes" },
-  { id: "7", cat: "Subs" },
-  { id: "8", cat: "Hungarian" },
-  { id: "9", cat: "Pizza" },
+  { cat: "1", cat: "Chinese" },
+  { cat: "2", cat: "Seafood" },
+  { cat: "3", cat: "Wraps" },
+  { cat: "4", cat: "French" },
+  { cat: "5", cat: "Sauces" },
+  { cat: "6", cat: "Yes" },
+  { cat: "7", cat: "Subs" },
+  { cat: "8", cat: "Hungarian" },
+  { cat: "9", cat: "Pizza" },
 ];
 
 export default function AccountDetailsScreen() {
@@ -79,7 +86,7 @@ export default function AccountDetailsScreen() {
         <Text style={styles.distance}>{item.distance}</Text>
       </View>
       <View style={styles.categoryContainer}>
-        <View style={{ borderRadius: 40 }}>
+        <View style={{ borderRadius: 40, backgroundColor: "#e0e0e0" }}>
           <Text style={styles.categoryText}>{item.category[0]}</Text>
         </View>
         <Text style={styles.categoryText}>{item.category[1]}</Text>
@@ -97,7 +104,12 @@ export default function AccountDetailsScreen() {
         <Text style={styles.hoursText}> Closes at {item.timeClose}</Text>
       </View>
       <View style={styles.callBtnContainer}>
-        <TouchableOpacity style={styles.callBtn}>
+        <TouchableOpacity
+          style={styles.callBtn}
+          onPress={() => {
+            Linking.openURL(item.phone);
+          }}
+        >
           <Text style={styles.callText}>Call</Text>
         </TouchableOpacity>
       </View>
@@ -106,16 +118,18 @@ export default function AccountDetailsScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <FlatList
+      <FlashList
+        estimatedItemSize={40}
         horizontal={true}
         data={categoryList}
         renderItem={topList}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.cat}
       />
-      <FlatList
+      <FlashList
+        estimatedItemSize={415}
         data={Data}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.user}
       />
     </SafeAreaView>
   );
@@ -129,8 +143,8 @@ const styles = StyleSheet.create({
     paddingRight: widthPercentageToDP(5),
   },
   horizontalList: {
-    borderBottomColor: "#000",
-    borderBottomWidth: 5,
+    borderBottomColor: "#c8c8c8",
+    borderBottomWidth: 2,
     height: heightPercentageToDP(8),
     justifyContent: "center",
   },
@@ -172,7 +186,6 @@ const styles = StyleSheet.create({
   categoryContainer: {
     marginTop: heightPercentageToDP(1),
     flexDirection: "row",
-    borderRadius: 40,
   },
   categoryText: {
     fontSize: 15,
@@ -183,8 +196,6 @@ const styles = StyleSheet.create({
     paddingTop: widthPercentageToDP(0.6),
     paddingBottom: widthPercentageToDP(0.6),
     marginRight: widthPercentageToDP(4),
-    backgroundColor: "#e0e0e0",
-    borderRadius: 40,
     //alignSelf: "center",
   },
   locationIcon: {
