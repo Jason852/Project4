@@ -4,6 +4,7 @@ import SignInScreen from "../screens/SignInScreen";
 import AccountDetailsScreen from "../screens/AccountDetailsScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import WelcomeScreen from "../screens/WelcomeScreen";
+import RestaurantDetailScreen from "../screens/RestaurantDetailScreen";
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,11 @@ export default function MainNav() {
         options={{ headerShown: false, gestureEnabled: false }}
         name="WelcomeScreen"
         component={WelcomeScreen}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="RestaurantDetails"
+        component={RestaurantDetailScreen}
       />
     </Stack.Navigator>
   );

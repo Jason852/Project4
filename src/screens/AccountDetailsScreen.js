@@ -5,6 +5,7 @@ import {
   Image,
   Linking,
   TouchableOpacity,
+  Pressable,
 } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -69,7 +70,7 @@ const categoryList = [
   { cat: "9", cat: "Pizza" },
 ];
 
-export default function AccountDetailsScreen() {
+export default function AccountDetailsScreen({ navigation }) {
   const topList = ({ item }) => (
     <View style={styles.horizontalList}>
       <TouchableOpacity style={styles.categoryButton}>
@@ -80,39 +81,47 @@ export default function AccountDetailsScreen() {
 
   const renderItem = ({ item }) => (
     <View style={styles.listItem}>
-      <Image style={styles.image} source={item.image} />
-      <View style={styles.restaurantNameContainer}>
-        <Text style={styles.restaurantName}>{item.name}</Text>
-        <Text style={styles.distance}>{item.distance}</Text>
-      </View>
-      <View style={styles.categoryContainer}>
-        <View style={{ borderRadius: 40, backgroundColor: "#e0e0e0" }}>
-          <Text style={styles.categoryText}>{item.category[0]}</Text>
-        </View>
-        <Text style={styles.categoryText}>{item.category[1]}</Text>
-      </View>
-      <View
-        style={{ flexDirection: "row", marginTop: heightPercentageToDP(1) }}
+      <Pressable
+        onPress={() =>
+          navigation.navigate("RestaurantDetails", { name: item.name })
+        }
       >
-        <Image
-          style={styles.locationIcon}
-          source={require("../images/location.png")}
-        />
-        <Text style={styles.locationText}>{item.location}</Text>
-        <Image source={require("../images/dot.png")} />
-        <Text style={styles.hoursText}>Open at {item.timeOpen}</Text>
-        <Text style={styles.hoursText}> Closes at {item.timeClose}</Text>
-      </View>
-      <View style={styles.callBtnContainer}>
-        <TouchableOpacity
-          style={styles.callBtn}
-          onPress={() => {
-            Linking.openURL(item.phone);
-          }}
+        <Image style={styles.image} source={item.image} />
+        <View style={styles.restaurantNameContainer}>
+          <Text style={styles.restaurantName}>{item.name}</Text>
+          <Text style={styles.distance}>{item.distance}</Text>
+        </View>
+        <View style={styles.categoryContainer}>
+          <View style={styles.categoryTextContainer}>
+            <Text style={styles.categoryText}>{item.category[0]}</Text>
+          </View>
+          <View style={styles.categoryTextContainer}>
+            <Text style={styles.categoryText}>{item.category[1]}</Text>
+          </View>
+        </View>
+        <View
+          style={{ flexDirection: "row", marginTop: heightPercentageToDP(1) }}
         >
-          <Text style={styles.callText}>Call</Text>
-        </TouchableOpacity>
-      </View>
+          <Image
+            style={styles.locationIcon}
+            source={require("../images/location.png")}
+          />
+          <Text style={styles.locationText}>{item.location}</Text>
+          <Image source={require("../images/dot.png")} />
+          <Text style={styles.hoursText}>Open at {item.timeOpen}</Text>
+          <Text style={styles.hoursText}> Closes at {item.timeClose}</Text>
+        </View>
+        <View style={styles.callBtnContainer}>
+          <TouchableOpacity
+            style={styles.callBtn}
+            onPress={() => {
+              Linking.openURL(item.phone);
+            }}
+          >
+            <Text style={styles.callText}>Call</Text>
+          </TouchableOpacity>
+        </View>
+      </Pressable>
     </View>
   );
 
@@ -187,16 +196,19 @@ const styles = StyleSheet.create({
     marginTop: heightPercentageToDP(1),
     flexDirection: "row",
   },
+  categoryTextContainer: {
+    borderRadius: 7,
+    backgroundColor: "#e0e0e0",
+    marginRight: widthPercentageToDP(2),
+  },
   categoryText: {
     fontSize: 15,
     fontWeight: "600",
     color: "#757575",
-    paddingLeft: widthPercentageToDP(1),
-    paddingRight: widthPercentageToDP(1),
+    paddingLeft: widthPercentageToDP(3),
+    paddingRight: widthPercentageToDP(3),
     paddingTop: widthPercentageToDP(0.6),
     paddingBottom: widthPercentageToDP(0.6),
-    marginRight: widthPercentageToDP(4),
-    //alignSelf: "center",
   },
   locationIcon: {
     //height:
