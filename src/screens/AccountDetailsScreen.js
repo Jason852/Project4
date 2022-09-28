@@ -19,7 +19,9 @@ const Data = [
     image: require("../images/baobuns.jpg"),
     name: "Stix Asian Deliciousness",
     category: ["Chinese", "Wraps"],
-    location: "Sunrise",
+    location: "Plantation",
+    latitude: "26.128900",
+    longitude: "-80.266810",
     timeOpen: "12:00",
     timeClose: "22:00",
     phone: "tel:9545554444",
@@ -31,7 +33,9 @@ const Data = [
     image: require("../images/french.jpg"),
     name: "Bistro French Cuisine",
     category: ["French", "Wraps", "Sauces"],
-    location: "Ft Lauderdale",
+    location: "Sunrise",
+    latitude: "26.136510",
+    longitude: "-80.232540",
     timeOpen: "17:00",
     timeClose: "23:00",
     phone: "tel:9545554448",
@@ -43,7 +47,9 @@ const Data = [
     image: require("../images/pizza.jpg"),
     name: "Pizza Party Palace",
     category: ["Pizza", "Subs", "Sauces"],
-    location: "Miami",
+    location: "Plantation",
+    latitude: "26.125530",
+    longitude: "-80.256760",
     timeOpen: "11:00",
     timeClose: "23:30",
     phone: "tel:9545554774",
@@ -55,7 +61,9 @@ const Data = [
     image: require("../images/pizza.jpg"),
     name: "Seafood Extravaganza",
     category: ["Seafood", "Yes"],
-    location: "Ft Lauderdale",
+    location: "Davie",
+    latitude: "26.08957",
+    longitude: "-80.25179",
     timeOpen: "11:00",
     timeClose: "23:30",
     phone: "tel:9545554774",
@@ -92,6 +100,8 @@ export default function AccountDetailsScreen({ navigation }) {
             name: item.name,
             rating: item.rating,
             image: item.image,
+            latitude: item.latitude,
+            longitude: item.longitude,
           })
         }
       >
@@ -258,5 +268,3 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
 });
-
-// figure out what three grey colors we want to use.  See if we can use the ones form the signon sheet
