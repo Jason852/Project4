@@ -11,6 +11,7 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FlashList } from "@shopify/flash-list";
 import { heightPercentageToDP, widthPercentageToDP } from "../../utils/scaler";
+import { Rating } from "react-native-stock-star-rating";
 
 const Data = [
   {
@@ -23,6 +24,7 @@ const Data = [
     timeClose: "22:00",
     phone: "tel:9545554444",
     distance: "2.8 mi",
+    rating: 4.5,
   },
   {
     user: "d2",
@@ -34,6 +36,7 @@ const Data = [
     timeClose: "23:00",
     phone: "tel:9545554448",
     distance: "1.1 mi",
+    rating: 3,
   },
   {
     user: "d3",
@@ -45,6 +48,7 @@ const Data = [
     timeClose: "23:30",
     phone: "tel:9545554774",
     distance: "0.8 mi",
+    rating: 2,
   },
   {
     user: "d4",
@@ -56,6 +60,7 @@ const Data = [
     timeClose: "23:30",
     phone: "tel:9545554774",
     distance: "3.4 mi",
+    rating: 5,
   },
 ];
 const categoryList = [
@@ -83,13 +88,25 @@ export default function AccountDetailsScreen({ navigation }) {
     <View style={styles.listItem}>
       <Pressable
         onPress={() =>
-          navigation.navigate("RestaurantDetails", { name: item.name })
+          navigation.navigate("RestaurantDetails", {
+            name: item.name,
+            rating: item.rating,
+            image: item.image,
+          })
         }
       >
         <Image style={styles.image} source={item.image} />
         <View style={styles.restaurantNameContainer}>
           <Text style={styles.restaurantName}>{item.name}</Text>
           <Text style={styles.distance}>{item.distance}</Text>
+        </View>
+        <View>
+          <Rating
+            stars={item.rating}
+            maxStars={5}
+            size={23}
+            color={"#ff6666"}
+          />
         </View>
         <View style={styles.categoryContainer}>
           <View style={styles.categoryTextContainer}>
