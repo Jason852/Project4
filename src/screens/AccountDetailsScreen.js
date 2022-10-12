@@ -17,7 +17,7 @@ const Data = [
   {
     user: "d1",
     image: require("../images/baobuns.jpg"),
-    name: "Stix Asian Deliciousness",
+    name: "Stix Asian Spot",
     category: ["Chinese", "Wraps"],
     location: "Plantation",
     latitude: "26.128900",
@@ -102,6 +102,9 @@ export default function AccountDetailsScreen({ navigation }) {
             image: item.image,
             latitude: item.latitude,
             longitude: item.longitude,
+            category: item.category,
+            timeClose: item.timeClose,
+            phone: item.phone,
           })
         }
       >

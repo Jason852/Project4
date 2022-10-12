@@ -5,6 +5,7 @@ import AccountDetailsScreen from "../screens/AccountDetailsScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import WelcomeScreen from "../screens/WelcomeScreen";
 import RestaurantDetailScreen from "../screens/RestaurantDetailScreen";
+import MapScreen from "../screens/MapScreen";
 
 const Stack = createStackNavigator();
 
@@ -32,9 +33,14 @@ export default function MainNav() {
         component={WelcomeScreen}
       />
       <Stack.Screen
-        options={{ headerShown: false }}
+        options={{ headerShown: false, gestureEnabled: false }}
         name="RestaurantDetails"
         component={RestaurantDetailScreen}
+      />
+      <Stack.Screen
+        options={{ gestureEnabled: false }}
+        name="MapScreen"
+        component={MapScreen}
       />
     </Stack.Navigator>
   );
