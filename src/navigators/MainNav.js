@@ -6,6 +6,7 @@ import RegisterScreen from "../screens/RegisterScreen";
 import WelcomeScreen from "../screens/WelcomeScreen";
 import RestaurantDetailScreen from "../screens/RestaurantDetailScreen";
 import MapScreen from "../screens/MapScreen";
+import FetchScreen from "../screens/FetchScreen";
 
 const Stack = createStackNavigator();
 
@@ -41,6 +42,11 @@ export default function MainNav() {
         options={{ gestureEnabled: false }}
         name="MapScreen"
         component={MapScreen}
+      />
+      <Stack.Screen
+        options={{ gestureEnabled: false }}
+        name="FetchScreen"
+        component={FetchScreen}
       />
     </Stack.Navigator>
   );

@@ -108,7 +108,7 @@ export default function RestaurantDetailScreen({ navigation, route }) {
         </View>
         <View>
           <Pressable>
-            <Text style={{ color: "#4287f5" }}>See all hours -></Text>
+            <Text style={{ color: "#4287f5" }}>See all hours -</Text>
           </Pressable>
         </View>
       </View>
@@ -144,7 +144,10 @@ export default function RestaurantDetailScreen({ navigation, route }) {
           </View>
           <Text style={styles.btnText}>View map</Text>
         </Pressable>
-        <Pressable style={styles.fullBtn}>
+        <Pressable
+          style={styles.fullBtn}
+          onPress={() => navigation.navigate("FetchScreen")}
+        >
           <View style={styles.btnIcon}>
             <Image source={require("../images/websiteIcon.png")} />
           </View>
