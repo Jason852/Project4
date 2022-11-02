@@ -9,11 +9,8 @@ import {
   Pressable,
 } from "react-native";
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { heightPercentageToDP, widthPercentageToDP } from "../../utils/scaler";
 import { Rating } from "react-native-stock-star-rating";
-import MapView from "react-native-maps";
-import { Marker } from "react-native-maps";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function RestaurantDetailScreen({ navigation, route }) {
