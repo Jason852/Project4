@@ -12,7 +12,7 @@ import { TextInput } from "react-native-gesture-handler";
 import { widthPercentageToDP, heightPercentageToDP } from "../../utils/scaler";
 
 export default function FetchScreen() {
-  const [isLoading, setIsLoading] = useState(true);
+  //const [isLoading, setIsLoading] = useState(true);
 
   const [data, setData] = useState();
   const [newKey, setNewKey] = useState();
@@ -43,19 +43,19 @@ export default function FetchScreen() {
       .then((res) => res.json())
       .then((data) => {
         setData(data);
-        setIsLoading(false);
+        //setIsLoading(false);
       });
   }, []);
   //console.log(data, "-------------------");
 
-  const getContent = () => {
-    if (isLoading) {
-      return <ActivityIndicator size="large" />;
-    } else {
-      return <Text>API called</Text>;
-    }
-    //console.log(data);
-  };
+  // const getContent = () => {
+  //   if (isLoading) {
+  //     return <ActivityIndicator size="large" />;
+  //   } else {
+  //     return <Text>API called</Text>;
+  //   }
+  //   //console.log(data);
+  // };
 
   const handleYearChange = (e) => {
     //console.log(e);
@@ -71,92 +71,106 @@ export default function FetchScreen() {
   };
 
   const handleAddingData = () => {
-    //console.log();
+    data.Zebra = newValue;
+    console.log(data);
     //console.log("hello");
+
+    // const obj = { name: "Johnny" };
+
+    // obj.age = 30;
+    // obj.state = "crazy";
+
+    // console.log(obj);
+
+    //console.log(data, "***************");
+    //console.log(newValue);
   };
 
-  //console.log(data, "***************");
-  //console.log(newValue);
-
   return (
-    <SafeAreaView>
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
-        <View>
-          <Text style={{ fontSize: 20 }}>Change Year:</Text>
-        </View>
-        <View style={styles.inputContainer}>
-          <TextInput
-            placeholder="New year"
-            style={{ fontSize: 18 }}
-            value={setData.Year}
-            onChangeText={handleYearChange}
-            //onChangeText={(text) => setData.Year(text)}
-          />
-        </View>
-      </View>
-      <View>{getContent()}</View>
-      {/* <View>
-        <Text>{data.Title} </Text>
-        <Text>{data.Rated} </Text>
-        <Text>{data.Year} </Text>
-      </View> */}
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
-        <View>
-          <Text style={{ fontSize: 20 }}>Remove Metascore:</Text>
-        </View>
-        <View>
-          <TouchableOpacity
-            style={styles.removalBtn}
-            onPress={handleMetascoreRemoval}
+    <>
+      {data ? (
+        <SafeAreaView>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <View>
+              <Text style={{ fontSize: 20 }}>Change Year:</Text>
+            </View>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="New year"
+                style={{ fontSize: 18 }}
+                value={setData.Year}
+                onChangeText={handleYearChange}
+                //onChangeText={(text) => setData.Year(text)}
+              />
+            </View>
+          </View>
+          {/* <View>{getContent()}</View> */}
+          <View>
+            <Text>{data.Title} </Text>
+            <Text>{data.Rated} </Text>
+            <Text>{data.Year} </Text>
+          </View>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <View>
+              <Text style={{ fontSize: 20 }}>Remove Metascore:</Text>
+            </View>
+            <View>
+              <TouchableOpacity
+                style={styles.removalBtn}
+                onPress={handleMetascoreRemoval}
+              >
+                <Text style={styles.loginText}>Remove Score</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginTop: heightPercentageToDP(10),
+            }}
           >
-            <Text style={styles.loginText}>Remove Score</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          marginTop: heightPercentageToDP(10),
-        }}
-      >
-        <View>
-          <Text style={{ fontSize: 20 }}>Add new key to Data:</Text>
-        </View>
-        <View style={styles.inputContainer}>
-          <TextInput
-            placeholder="Add Key"
-            style={{ fontSize: 18 }}
-            value={newKey}
-            onChangeText={setNewKey}
-          />
-        </View>
-      </View>
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          marginTop: heightPercentageToDP(1),
-        }}
-      >
-        <View>
-          <Text style={{ fontSize: 20 }}>Add value to key:</Text>
-        </View>
-        <View style={styles.inputContainer}>
-          <TextInput
-            placeholder="Add Value"
-            style={{ fontSize: 18 }}
-            value={newValue}
-            onChangeText={setNewValue}
-          />
-        </View>
-      </View>
-      <View>
-        <TouchableOpacity style={styles.addBtn} onPress={handleAddingData}>
-          <Text style={styles.loginText}>Add Data</Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
+            <View>
+              <Text style={{ fontSize: 20 }}>Add new key to Data:</Text>
+            </View>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="Add Key"
+                style={{ fontSize: 18 }}
+                value={newKey}
+                onChangeText={setNewKey}
+              />
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginTop: heightPercentageToDP(1),
+            }}
+          >
+            <View>
+              <Text style={{ fontSize: 20 }}>Add value to key:</Text>
+            </View>
+            <View style={styles.inputContainer}>
+              <TextInput
+                placeholder="Add Value"
+                style={{ fontSize: 18 }}
+                value={newValue}
+                onChangeText={setNewValue}
+              />
+            </View>
+          </View>
+          <View>
+            <TouchableOpacity style={styles.addBtn} onPress={handleAddingData}>
+              <Text style={styles.loginText}>Add Data</Text>
+            </TouchableOpacity>
+          </View>
+        </SafeAreaView>
+      ) : (
+        <ActivityIndicator />
+      )}
+    </>
   );
 }
 
